@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tech Product Showcase</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f4f7fb;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(135deg, #0d47a1, #1976d2);
+      color: #fff;
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2.8rem;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 1.05rem;
+      opacity: 0.95;
+    }
+
+    nav {
+      background: #1565c0;
+      padding: 14px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      text-align: center;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 12px;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #ffd54f;
+    }
+
+    section {
+      padding: 70px 8%;
+    }
+
+    section h2 {
+      text-align: center;
+      margin-bottom: 35px;
+      font-size: 2rem;
+      color: #0d47a1;
+    }
+
+    .hero {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #fff;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .hero-text {
+      flex: 1;
+      min-width: 280px;
+    }
+
+    .hero-text h2 {
+      text-align: left;
+      margin-bottom: 15px;
+      font-size: 2.2rem;
+      color: #0d47a1;
+    }
+
+    .hero-text p {
+      margin-bottom: 20px;
+      font-size: 1rem;
+    }
+
+    .hero-text a {
+      display: inline-block;
+      background: #1565c0;
+      color: white;
+      padding: 12px 22px;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .hero-text a:hover {
+      background: #0d47a1;
+    }
+
+    .hero-image {
+      flex: 1;
+      min-width: 280px;
+      text-align: center;
+    }
+
+    .hero-image img {
+      width: 100%;
+      max-width: 500px;
+      border-radius: 14px;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.16);
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.08);
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+    }
+
+    .card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 20px;
+    }
+
+    .card-content h3 {
+      color: #1565c0;
+      margin-bottom: 8px;
+    }
+
+    .card-content p {
+      margin-bottom: 10px;
+    }
+
+    .card-content a {
+      color: #0d47a1;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+    }
+
+    th, td {
+      border: 1px solid #dce4ee;
+      padding: 14px;
+      text-align: center;
+    }
+
+    th {
+      background: #1565c0;
+      color: white;
+    }
+
+    .list-box {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .list-box div {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 7px 18px rgba(0, 0, 0, 0.07);
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 10px;
+      transition: 0.3s;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.03);
+    }
+
+    .media {
+      text-align: center;
+    }
+
+    audio, video {
+      width: min(90%, 700px);
+      margin-top: 12px;
+    }
+
+    form {
+      max-width: 760px;
+      margin: auto;
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.08);
+    }
+
+    label {
+      display: block;
+      margin-top: 14px;
+      margin-bottom: 6px;
+      font-weight: 600;
+      color: #0d47a1;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #cfd8e3;
+      border-radius: 6px;
+      font-size: 1rem;
+    }
+
+    .inline-options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      margin-top: 6px;
+    }
+
+    .inline-options label {
+      margin: 0;
+      font-weight: 500;
+      color: #333;
+    }
+
+    button {
+      padding: 12px 24px;
+      margin-top: 16px;
+      border: none;
+      border-radius: 6px;
+      background: #1565c0;
+      color: white;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #0d47a1;
+    }
+
+    .contact-info {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .contact-info a {
+      color: #1565c0;
+      text-decoration: none;
+    }
+
+    footer {
+      background: #0d47a1;
+      color: white;
+      text-align: center;
+      padding: 30px 20px;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .hero-text h2 {
+        text-align: center;
+      }
+
+      header h1 {
+        font-size: 2.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header id="home">
+    <h1>Tech Product Showcase</h1>
+    <p>Discover innovative gadgets and smart technology in one place.</p>
+  </header>
+
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#products">Products</a>
+    <a href="#specifications">Specifications</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#contact">Contact</a>
+    <a href="https://www.apple.com" target="_blank">Apple</a>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-text">
+      <h2>Experience the Future of Technology</h2>
+      <p>Explore premium smartphones, laptops, smartwatches, gaming accessories, and innovative gadgets designed for modern lifestyles.</p>
+      <a href="#products">Explore Products</a>
+    </div>
+    <div class="hero-image">
+      <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=80" alt="Tech products" />
+    </div>
+  </section>
+
+  <section id="products">
+    <h2>Featured Tech Products</h2>
+    <div class="cards">
+      <article class="card">
+        <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=700&q=80" alt="Smartphone" />
+        <div class="card-content">
+          <h3>Premium Smartphone</h3>
+          <p>Experience blazing-fast performance, AI-powered cameras, 5G connectivity, and an immersive AMOLED display.</p>
+          <a href="https://www.apple.com" target="_blank">Learn More →</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=700&q=80" alt="Laptop" />
+        <div class="card-content">
+          <h3>Ultra Laptop</h3>
+          <p>Designed for creators, programmers, and professionals with powerful processors and long battery life.</p>
+          <a href="https://www.dell.com" target="_blank">Learn More →</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?auto=format&fit=crop&w=700&q=80" alt="Smartwatch" />
+        <div class="card-content">
+          <h3>Smart Watch</h3>
+          <p>Track your health, receive notifications, and stay connected with advanced wearable technology.</p>
+          <a href="https://www.samsung.com" target="_blank">Learn More →</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section>
+    <h2>Latest Technology Trends</h2>
+    <div class="cards">
+      <article class="card">
+        <div class="card-content">
+          <h3>Artificial Intelligence</h3>
+          <p>Artificial Intelligence is transforming industries through automation, smart assistants, and machine learning.</p>
+        </div>
+      </article>
+      <article class="card">
+        <div class="card-content">
+          <h3>Cloud Computing</h3>
+          <p>Cloud platforms provide scalable storage, online collaboration, and faster application deployment.</p>
+        </div>
+      </article>
+      <article class="card">
+        <div class="card-content">
+          <h3>Cyber Security</h3>
+          <p>Modern cyber security solutions protect personal and business data from online threats.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="specifications">
+    <h2>Product Specifications</h2>
+    <table>
+      <tr>
+        <th>Product</th>
+        <th>Processor</th>
+        <th>Storage</th>
+        <th>Price</th>
+      </tr>
+      <tr>
+        <td>Smartphone</td>
+        <td>Snapdragon 8 Gen 3</td>
+        <td>256 GB</td>
+        <td>₹79,999</td>
+      </tr>
+      <tr>
+        <td>Laptop</td>
+        <td>Intel Core Ultra 7</td>
+        <td>1 TB SSD</td>
+        <td>₹1,15,000</td>
+      </tr>
+      <tr>
+        <td>Smart Watch</td>
+        <td>Dual Core</td>
+        <td>32 GB</td>
+        <td>₹29,999</td>
+      </tr>
+      <tr>
+        <td>Wireless Earbuds</td>
+        <td>Bluetooth 5.3</td>
+        <td>—</td>
+        <td>₹8,999</td>
+      </tr>
+    </table>
+  </section>
+
+  <section>
+    <h2>Technology Categories</h2>
+    <div class="list-box">
+      <div>
+        <h3>Popular Devices</h3>
+        <ol>
+          <li>Smartphones
+            <ol>
+              <li>Android</li>
+              <li>iPhone</li>
+            </ol>
+          </li>
+          <li>Laptops
+            <ol>
+              <li>Gaming</li>
+              <li>Business</li>
+            </ol>
+          </li>
+        </ol>
+      </div>
+      <div>
+        <h3>Accessories</h3>
+        <ul>
+          <li>Audio
+            <ul>
+              <li>Earbuds</li>
+              <li>Headphones</li>
+            </ul>
+          </li>
+          <li>Wearables
+            <ul>
+              <li>Smart Watch</li>
+              <li>Fitness Band</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3>Technology Terms</h3>
+        <dl>
+          <dt>AI</dt>
+          <dd>Artificial Intelligence that enables machines to perform intelligent tasks.</dd>
+          <dt>5G</dt>
+          <dd>Fifth-generation wireless technology with ultra-fast internet speed.</dd>
+          <dt>SSD</dt>
+          <dd>Solid State Drive used for high-speed storage.</dd>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section id="gallery">
+    <h2>Technology Gallery</h2>
+    <div class="gallery">
+      <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=700&q=80" alt="Phone" />
+      <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=700&q=80" alt="Laptop" />
+      <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?auto=format&fit=crop&w=700&q=80" alt="Watch" />
+      <img src="https://images.unsplash.com/photo-1580894908361-967195033215?auto=format&fit=crop&w=700&q=80" alt="Headphones" />
+    </div>
+  </section>
+
+  <section>
+    <h2>Product Multimedia</h2>
+    <div class="media">
+      <h3>Product Audio</h3>
+      <audio controls>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg" />
+        Your browser does not support the audio element.
+      </audio>
+
+      <br /><br />
+      <h3>Product Demo Video</h3>
+      <video controls width="700">
+        <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" />
+        Your browser does not support the video element.
+      </video>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Customer Enquiry Form</h2>
+    <form action="#">
+      <label for="name">Customer Name</label>
+      <input type="text" id="name" name="name" placeholder="Enter your name" required />
+
+      <label for="email">Email Address</label>
+      <input type="email" id="email" name="email" placeholder="example@gmail.com" required />
+
+      <label for="password">Create Password</label>
+      <input type="password" id="password" name="password" required />
+
+      <label for="age">Customer Age</label>
+      <input type="number" id="age" name="age" min="18" max="70" />
+
+      <label for="date">Preferred Purchase Date</label>
+      <input type="date" id="date" name="date" />
+
+      <label>Gender</label>
+      <div class="inline-options">
+        <input type="radio" id="male" name="gender" value="Male" />
+        <label for="male">Male</label>
+        <input type="radio" id="female" name="gender" value="Female" />
+        <label for="female">Female</label>
+        <input type="radio" id="other" name="gender" value="Other" />
+        <label for="other">Other</label>
+      </div>
+
+      <label>Interested Product Categories</label>
+      <div class="inline-options">
+        <input type="checkbox" id="laptop" name="product" value="Laptop" />
+        <label for="laptop">Laptop</label>
+        <input type="checkbox" id="smartphone" name="product" value="Smartphone" />
+        <label for="smartphone">Smartphone</label>
+        <input type="checkbox" id="smartwatch" name="product" value="Smartwatch" />
+        <label for="smartwatch">Smartwatch</label>
+        <input type="checkbox" id="accessories" name="product" value="Accessories" />
+        <label for="accessories">Accessories</label>
+      </div>
+
+      <label for="brand">Select Brand</label>
+      <select id="brand" name="brand" required>
+        <option value="">Choose Brand</option>
+        <option value="Apple">Apple</option>
+        <option value="Samsung">Samsung</option>
+        <option value="Dell">Dell</option>
+        <option value="HP">HP</option>
+        <option value="Lenovo">Lenovo</option>
+      </select>
+
+      <label for="requirements">Product Requirements</label>
+      <textarea id="requirements" name="requirements" rows="5" placeholder="Enter your product requirements"></textarea>
+
+      <label for="color">Preferred Product Color</label>
+      <input type="color" id="color" name="color" />
+
+      <label for="image">Upload Reference Image</label>
+      <input type="file" id="image" name="image" />
+
+      <label for="budget">Budget Range</label>
+      <input type="range" id="budget" name="budget" min="100" max="5000" />
+
+      <button type="submit">Submit</button>
+      <button type="reset">Reset</button>
+    </form>
+
+    <div class="contact-info">
+      <h3>Contact Us</h3>
+      <p>Email: <a href="mailto:techshowcase@gmail.com">techshowcase@gmail.com</a></p>
+      <p>Phone: <a href="tel:+919876543210">+91 9876543210</a></p>
+      <br />
+      <a href="#home">⬆ Back to Top</a>
+    </div>
+  </section>
+
+  <footer>
+    <p><strong>Done By:</strong> EDWIN A</p>
+    <p><strong>Register Number:</strong> URK24CS1201</p>
+    <p><strong>Exercise No:</strong> 1</p>
+    <p><strong>Title:</strong> Tech Product Showcase</p>
+    <p>&copy; 2026 Tech Product Showcase. All Rights Reserved.</p>
+  </footer>
+</body>
+</html>
